@@ -1,9 +1,0 @@
-package com.maShiBing;
-
-public class TestEnum {
-	public enum DoorOpener {me, mywife };
-	public static void main(String[] args){
-		DoorOpener a = DoorOpener.me;
-		System.out.println(a);
-	}
-}
