@@ -1,0 +1,4 @@
+package testpackage.copy;
+
+class Cat {
+}

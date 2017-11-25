@@ -1,0 +1,10 @@
+package com.maShiBing;
+
+import java.io.*;
+
+public class TestFile {
+	public static void main(String[] args)throws IOException{
+		File f=new File("C:/OneDrive/Java_workspace/a.txt");
+		f.createNewFile();
+		}
+}

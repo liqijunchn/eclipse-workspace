@@ -1,0 +1,4 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<session version="1.0">
+<refactoring comment="Rename resource &apos;Anaconda_workspace/numeric Analysis/Interpolation&apos; to &apos;Interpolation.py&apos;" description="Rename resource &apos;Interpolation&apos;" flags="7" id="org.eclipse.ltk.core.refactoring.rename.resource" input="numeric Analysis/Interpolation" name="Interpolation.py" stamp="1506912990963" updateReferences="true"/>
+</session>

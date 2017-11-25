@@ -1,0 +1,18 @@
+package com.maShiBing;
+
+import java.io.*;
+
+public static void main(String[] args){
+	String directory  = "mydir1/mydir2";
+	String filename = "myfile.txt";
+	File f=new File(directory);
+    System.out.println(f);
+	System.out.println(f.getParentFile());
+	System.out.println(f.getAbsoluteFile());
+	f.mkdirs();
+	try{
+		f.createNewFile();
+	}catch(IOException e){
+		e.printStackTrace();
+	}
+}
