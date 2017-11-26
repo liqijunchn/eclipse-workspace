@@ -16,7 +16,8 @@ public class ChatClient extends Frame {
 		setLocation(400,400);
 		setSize(300,300);
 		add(ta,BorderLayout.NORTH);
-		add(tf,BorderLayout.CENTER);	
+		add(tf,BorderLayout.SOUTH);	
+		pack();
 		addWindowListener(new WindowAdapter() {
 			
 			@Override
@@ -24,7 +25,20 @@ public class ChatClient extends Frame {
 				System.exit(0);
 			}			
 		});
+		tf.addActionListener(new TfListener());
 		setVisible(true);
 	}
+	
+	private class TfListener implements ActionListener {
 
+		@Override
+		public void actionPerformed(ActionEvent e) {
+			String s = tf.getText();
+			ta.setText(s);
+			tf.setText("");
+			
+		}
+		
+		
+	}
 }
