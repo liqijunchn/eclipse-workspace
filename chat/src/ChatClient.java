@@ -7,6 +7,8 @@ public class ChatClient extends Frame {
 	
 	Socket s = null;
 	DataOutputStream dos = null;
+	DataInputStream dis = null;
+	private boolean bconnected = false;
 
 	TextArea ta = new TextArea(4,40);
 	TextField tf = new TextField();	
@@ -30,15 +32,18 @@ public class ChatClient extends Frame {
 			}			
 		});
 		tf.addActionListener(new TfListener());
-		connect();
 		setVisible(true);
+		connect();
+		new Thread(new RecvThread()).start();
 	}
 	
 	public void connect() {
 		try {
 			s = new Socket("127.0.0.1",8888);
 			dos = new DataOutputStream(s.getOutputStream());
-//System.out.print("connection");			
+			dis = new DataInputStream(s.getInputStream());
+			bconnected = true;
+System.out.println("connection");			
 		} catch (UnknownHostException e) {	
 			e.printStackTrace();
 		} catch (IOException e) {
@@ -60,7 +65,7 @@ public class ChatClient extends Frame {
 		@Override
 		public void actionPerformed(ActionEvent e) {
 			String str = tf.getText();
-			ta.setText(str);
+//			ta.setText(str);
 			tf.setText("");
 			try {
 				dos.writeUTF(str);
@@ -70,5 +75,21 @@ public class ChatClient extends Frame {
 				e1.printStackTrace();
 			}						
 		}		
+	}
+	
+	class RecvThread implements Runnable{
+
+		@Override
+		public void run() {
+			try {
+				while(bconnected) {
+					String str = dis.readUTF();
+					System.out.println(str);
+					ta.setText(ta.getText()+ str +"\n");
+				}
+			}catch(IOException e) {
+				e.printStackTrace();
+			}
+		}	
 	}
 }
